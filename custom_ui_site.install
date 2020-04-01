@@ -1,0 +1,81 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function custom_ui_site_schema() {
+  $schema['custom_ui_site'] = array(
+    'description' => 'Custom Metatag Data table.',
+    'fields' => array(
+      'id' => array(
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'type' => array(
+        'description' => 'Type page',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => '',
+      ),
+      'alias' => array(
+        'description' => 'Internal alias.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => '',
+      ),
+      'internal_path' => array(
+        'description' => 'Internal path entity.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => '',
+      ),
+      'langcode' => array(
+        'description' => 'Language.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => '',
+      ),
+      'ui_path' => array(
+        'description' => 'UI path.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => '',
+      ),
+
+      'data' => array(
+        'type' => 'blob',
+        'not null' => FALSE,
+        'size' => 'big',
+        'serialize' => TRUE,
+        'description' => 'Data for this url.',
+      )),
+
+      'primary key' => array('id'),
+
+      'indexes' => array(
+            'alias' => array(
+              'alias',
+            ),
+        'internal_path' => array(
+          'internal_path',
+        ),
+        'ui_path' => array(
+          'ui_path',
+        ),
+        'langcode' => array(
+          'langcode',
+        ),
+        'type' => array(
+          'type',
+        ),
+      ),
+
+  );
+  return $schema;
+}

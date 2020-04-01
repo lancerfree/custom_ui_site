@@ -1,0 +1,6 @@
+services:
+ #priority after cache
+  custom_site.restrict_access:
+    class: Drupal\custom_ui_site\HttpMiddleware\CustomSiteHTML
+    tags:
+      - { name: http_middleware , priority: 205 }

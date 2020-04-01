@@ -1,0 +1,9 @@
+name: Custom UI Site
+description: Custom module for ui site
+package: Custom
+type: module
+
+core: '8.x'
+
+
+
